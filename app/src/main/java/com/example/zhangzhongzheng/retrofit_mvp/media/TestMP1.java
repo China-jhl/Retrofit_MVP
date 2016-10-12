@@ -4,11 +4,16 @@ import android.content.Context;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.os.Environment;
+import android.widget.Toast;
 
 import com.example.zhangzhongzheng.retrofit_mvp.utils.MyLogger;
 
 /**
  * Created by 龙 on 2016-10-11.
+ * <p/>
+ * 目的：可以创建多个多个mediaplayer  但是只能一个进行播放
+ * <p/>
+ * 失去焦点后，在此获取不能自动播放
  */
 public class TestMP1 implements AudioManager.OnAudioFocusChangeListener {
     private Context mContext;
@@ -62,8 +67,11 @@ public class TestMP1 implements AudioManager.OnAudioFocusChangeListener {
         if (mp != null && mp.isPlaying()) {
             mp.pause();
         } else if (mp != null && !mp.isPlaying()) {
-            registerFoucusListener(); 
-            mp.start();
+            if (registerFoucusListener()) {
+                mp.start();
+            } else {
+                Toast.makeText(mContext, "没有抢到焦点", Toast.LENGTH_SHORT).show();
+            }
         }
 
         MyLogger.log("tag", which_mp + "状态？" + mp.isPlaying() + "");
@@ -83,6 +91,7 @@ public class TestMP1 implements AudioManager.OnAudioFocusChangeListener {
                 // Lost focus for an unbounded amount of time: stop playback and release media player
 //                if (mp.isPlaying()) mp.stop();
 //                release();
+                pause();
                 MyLogger.log("tag", which_mp + "loss");
                 break;
             case AudioManager.AUDIOFOCUS_LOSS_TRANSIENT:
@@ -90,6 +99,7 @@ public class TestMP1 implements AudioManager.OnAudioFocusChangeListener {
                 // playback. We don't release the media player because playback
                 // is likely to resume
 //                if (mp.isPlaying()) mp.pause();
+                pause();
                 MyLogger.log("tag", which_mp + "loss_transient");
                 break;
             case AudioManager.AUDIOFOCUS_LOSS_TRANSIENT_CAN_DUCK:
@@ -101,9 +111,13 @@ public class TestMP1 implements AudioManager.OnAudioFocusChangeListener {
         }
     }
 
-    public void registerFoucusListener() {
+    public boolean registerFoucusListener() {
         AudioManager audioManager = (AudioManager) mContext.getSystemService(Context.AUDIO_SERVICE);
-        audioManager.requestAudioFocus(this, AudioManager.STREAM_MUSIC,
+        int result = audioManager.requestAudioFocus(this, AudioManager.STREAM_MUSIC,
                 AudioManager.AUDIOFOCUS_GAIN);
+        if (result != AudioManager.AUDIOFOCUS_REQUEST_GRANTED) {
+            return false;
+        }
+        return true;
     }
 }
