@@ -5,6 +5,7 @@
 
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -22,6 +23,9 @@
         <activity android:name=".tabhost.TabHostActivity" />
         <activity android:name=".appbarlayout.Activity_APL" />
         <activity android:name=".media.TestMediaPActivity" />
+        <activity
+            android:name=".media.player.PlayerActivity"
+            android:theme="@style/player" />
     </application>
 
 </manifest>

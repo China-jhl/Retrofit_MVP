@@ -1,7 +1,6 @@
 package com.example.zhangzhongzheng.retrofit_mvp;
 
 import android.content.Intent;
-import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
@@ -13,6 +12,7 @@ import android.widget.Toast;
 
 import com.example.zhangzhongzheng.retrofit_mvp.appbarlayout.Activity_APL;
 import com.example.zhangzhongzheng.retrofit_mvp.media.TestMediaPActivity;
+import com.example.zhangzhongzheng.retrofit_mvp.media.player.PlayerActivity;
 import com.example.zhangzhongzheng.retrofit_mvp.tabhost.TabHostActivity;
 import com.example.zhangzhongzheng.retrofit_mvp.widget.RecyclerRefreshLayout;
 
@@ -30,6 +30,7 @@ public class MainActivity extends AppCompatActivity implements RecyclerRefreshLa
     //一些列测试button  开启测试activity
     private Button bt1;
     private Button bt2;
+    private Button bt3;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -84,6 +85,15 @@ public class MainActivity extends AppCompatActivity implements RecyclerRefreshLa
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, TestMediaPActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        bt3 = (Button) findViewById(R.id.bt3);
+        bt3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, PlayerActivity.class);
                 startActivity(intent);
             }
         });
