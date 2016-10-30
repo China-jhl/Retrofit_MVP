@@ -10,6 +10,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.example.zhangzhongzheng.retrofit_mvp.animation.Animator.BezierAnimator;
+import com.example.zhangzhongzheng.retrofit_mvp.animation.BezierActivity;
 import com.example.zhangzhongzheng.retrofit_mvp.appbarlayout.Activity_APL;
 import com.example.zhangzhongzheng.retrofit_mvp.media.TestMediaPActivity;
 import com.example.zhangzhongzheng.retrofit_mvp.media.player.PlayerActivity;
@@ -47,6 +49,8 @@ public class MainActivity extends AppCompatActivity implements RecyclerRefreshLa
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(adapter);
         recyclerView.setItemAnimator(new SlideInOutLeftItemAnimator(recyclerView));
+
+        
         View footer = View.inflate(this, R.layout.layout_list_view_footer, null);
 
         add = (Button) findViewById(R.id.bt_add);
@@ -55,7 +59,7 @@ public class MainActivity extends AppCompatActivity implements RecyclerRefreshLa
             @Override
             public void onClick(View view) {
 //                adapter.addItem();
-                Intent intent = new Intent(MainActivity.this, TabHostActivity.class);
+                Intent intent = new Intent(MainActivity.this, BezierActivity.class);
                 startActivity(intent);
             }
         });

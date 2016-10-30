@@ -26,6 +26,7 @@
         <activity
             android:name=".media.player.PlayerActivity"
             android:theme="@style/player" />
+        <activity android:name=".animation.BezierActivity" />
     </application>
 
 </manifest>

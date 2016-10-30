@@ -24,8 +24,8 @@ public class PlayerActivity extends AppCompatActivity implements ExoPlayer.Event
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_player);
-        playerView = (SimpleExoPlayerView) findViewById(R.id.player_view);
+      //  setContentView(R.layout.activity_player);
+       // playerView = (SimpleExoPlayerView) findViewById(R.id.player_view);
 
         player = new JPlayer.Builder(this)
                 .addListener(this)
