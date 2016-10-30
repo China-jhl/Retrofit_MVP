@@ -1,6 +1,5 @@
 package com.example.zhangzhongzheng.retrofit_mvp.animation.Animator;
 
-import android.animation.IntEvaluator;
 import android.animation.TypeEvaluator;
 import android.animation.ValueAnimator;
 import android.view.View;
