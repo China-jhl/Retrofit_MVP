@@ -1,4 +1,4 @@
-package com.example.zhangzhongzheng.retrofit_mvp.animation.Animator;
+package com.example.zhangzhongzheng.retrofit_mvp.animation.Animator.reveal;
 
 import android.animation.Animator;
 import android.os.Build;
@@ -39,6 +39,7 @@ public class RevealAnimator {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             mAnimator = ViewAnimationUtils.createCircularReveal(target, getCenterX(), getCenterY(), 0, endRadius());
         } else {
+            mAnimator = ViewAnimationUtilsCompat.createCircularReveal(target, getCenterX(), getCenterY(), 0, endRadius());
         }
     }
 

@@ -9,9 +9,7 @@ import android.view.View;
 import android.widget.ImageView;
 
 import com.example.zhangzhongzheng.retrofit_mvp.R;
-import com.example.zhangzhongzheng.retrofit_mvp.animation.Animator.BezierAnimator;
-import com.example.zhangzhongzheng.retrofit_mvp.animation.Animator.BezierAnimator.Point;
-import com.example.zhangzhongzheng.retrofit_mvp.animation.Animator.RevealAnimator;
+import com.example.zhangzhongzheng.retrofit_mvp.animation.Animator.reveal.RevealAnimator;
 
 /**
  * Created by 龙 on 2016-10-28.
@@ -38,6 +36,11 @@ public class BezierActivity extends AppCompatActivity {
                     animator.start();
                 }
             });
+        } else {
+            RevealAnimator animator = new RevealAnimator(iv, RevealAnimator.POSITION_CENTER);
+            // animator.setRepeatCount(10);
+            animator.setDuration(1500);
+            animator.start();
         }
 
     }
